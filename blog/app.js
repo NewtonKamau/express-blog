@@ -14,13 +14,16 @@ const app = express();
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.render("home", { startingContent: homeContent });
-})
+});
 app.get('/about', (req, res) => {
-   res.render("about", { aboutContent: aboutContent });
-})
+  res.render("about", { aboutContent: aboutContent });
+});
 app.get("/contact", (req, res) => {
   res.render("contact", { contactContent: contactContent });
-})
+});
+app.get('/compose', (req, res) => {
+  res.render('compose');
+});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
