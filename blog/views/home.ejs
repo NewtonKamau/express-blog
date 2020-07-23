@@ -1,9 +1,12 @@
 <%- include partial/header.ejs %>
 <h1>Home</h1>
-<p><% startingContent %></p>
-<% for (i = 0; i < blogPost.length; i++){ %>
-    <p><%= console.log(blogPost[i].title) %></p>
+<p> <%= startingContent %> </p>
 
-<% } %>
+<% blogPost.forEach(function(blogPost){ %>
+    
+<h2><%= blogPost.title %> </h2>
+<p><%=blogPost.post %></p>
+<% }) %>
+
 
 <%- include partial/footer.ejs %>
