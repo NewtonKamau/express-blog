@@ -12,21 +12,28 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 const app = express();
 
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
   res.render("home", { startingContent: homeContent });
 });
-app.get('/about', (req, res) => {
+app.get("/about", (req, res) => {
   res.render("about", { aboutContent: aboutContent });
 });
 app.get("/contact", (req, res) => {
   res.render("contact", { contactContent: contactContent });
 });
-app.get('/compose', (req, res) => {
-  res.render('compose');
+app.get("/compose", (req, res) => {
+  res.render("compose");
 });
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
-
+app.post("/compose", (req, res) => {
+  let post = req.body.post;
+  let title = req.body.title;
+  console.log(title);
+  console.log(post);
+  
+});
 
 
 
