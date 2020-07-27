@@ -45,24 +45,12 @@ app.get('/posts/:post', function (req, res) {
   blogs.forEach(function (blog) {
     const storedTitle = _.toLower(blog.title);
     if (storedTitle === requestedRoute) {
-      res.render('post', { postTitle: storedTitle , postBody:blog.post });
-    } 
+      res.render('post', { postTitle: storedTitle, postBody: blog.post });
+    }
   });
   
-})
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server started on port 3000");
 });
