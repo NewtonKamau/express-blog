@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 
 const homeContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempusquam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo velorci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesqueadipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purussit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia atquis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing."; 
@@ -39,6 +40,16 @@ var blog = {
   res.redirect('/');
   
 });
+app.get('/posts/:post', function (req, res) {
+  var requestedRoute = _.toLower(req.params.post);
+  blogs.forEach(function (blog) {
+    const storedTitle = _.toLower(blog.title);
+    if (storedTitle === requestedRoute) {
+      res.render('post', { postTitle: storedTitle , postBody:blog.post });
+    } 
+  });
+  
+})
 
 
 
