@@ -5,7 +5,8 @@
 <% blogPost.forEach(function(blogPost){ %>
     
 <h2><%= blogPost.title %> </h2>
-<p><%=blogPost.post %></p>
+<p><%=blogPost.post.substring(0,100) + '...' %></p>
+<a href="/posts/<%=blogPost.title %>"> more</a>
 <% }) %>
 
 
